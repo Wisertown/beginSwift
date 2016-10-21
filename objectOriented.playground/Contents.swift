@@ -94,6 +94,18 @@ class SuperEnemy: Enemy{
 
 class LaserTower: Tower{
     
+    
+    override init(x: Int, y: Int){
+        super.init(x:x, y:y)
+        self.range = 100
+        self.strength = 100
+    }
+    override func fireAtEnemy(enemy: Enemy) {
+        while enemy.life >= 0{
+            enemy.decreaseHealth(strength)
+        }
+        print("Enemy Vanquished")
+    }
 }
 
 
@@ -101,14 +113,49 @@ class LaserTower: Tower{
 let tower = Tower(x:0, y:0)
 let enemy = Enemy(x:1, y:1)
 
-let superEnemy = SuperEnemy(x:3, y:0)
+let laserTower = LaserTower(x:0, y:0)
+
+
+
+let superEnemy = SuperEnemy(x:20, y:20)
 superEnemy.life
 
 tower.fireAtEnemy(enemy)
+laserTower.fireAtEnemy(superEnemy)
+/////////////////////////////////////
+//Another example of OOP with swift//
+/////////////////////////////////////
+
+class Person {
+    let firstName: String
+    let lastName: String
+    
+    init(firstName: String, lastName: String) {
+        self.firstName = firstName
+        self.lastName = lastName
+    }
+    
+    func getFullName() -> String {
+        return "\(firstName) \(lastName)"
+    }
+}
+class Doctor: Person{
+    
+    override func getFullName()->String{
+        return "Dr. \(lastName)"
+    }
+}
+
+let someDoctor = Doctor(firstName:"Sam", lastName:"Jenkins")
+someDoctor.getFullName()
 
 /////////////////////////////////////
 //Another example of OOP with swift//
 /////////////////////////////////////
+
+
+
+
 struct Location {
     let latitude: Double
     let longitude: Double
