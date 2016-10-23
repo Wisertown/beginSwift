@@ -171,3 +171,43 @@ class Business {
 }
 
 let someBusiness = Business(name: "AOL", location: Location(latitude:12.4, longitude:19.0))
+
+
+////////////////////////////
+//Another example of OOP with swift//
+/////////////////////////////////////
+
+class Point {
+    var x: Int
+    var y: Int
+    
+    init(x: Int, y: Int){
+        self.x = x
+        self.y = y
+    }
+}
+
+
+class Machine {
+    var location: Point
+    
+    init() {
+        self.location = Point(x: 0, y: 0)
+    }
+    
+    func move(direction: String) {
+        print("Do nothing! Im a machine!")
+    }
+}
+
+class Robot: Machine {
+    override func move(direction: String) {
+        switch direction {
+        case "Up": location.y += 1
+        case "Down": location.y -= 1
+        case "Left": location.x -= 1
+        case "Right": location.x += 1
+        default: break
+        }
+    }
+}
